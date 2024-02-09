@@ -1,12 +1,18 @@
 import React from 'react'
+import GroupCard from '../../components/GroupCard'
 import Header from '../../components/Header'
-import { Container, Title } from './styles'
+import Highlight from '../../components/Highlight'
+import { Container } from './styles'
 
 export default function Groups() {
   return (
     <Container>
       <Header />
-      <Title>Groups</Title>
+
+      <Highlight title='Turmas' subtitle='Jogue com a sua turma' />
+
+      <GroupCard title='Turma do DBD' />
+      <GroupCard title='Galera do Lolzin' />
     </Container>
   )
 }
