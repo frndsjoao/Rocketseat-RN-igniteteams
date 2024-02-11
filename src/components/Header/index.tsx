@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import logoImg from '../../assets/logo.png';
 import { BackButton, BackIcon, Container, Logo } from './styles';
@@ -7,10 +8,16 @@ type Props = {
 }
 
 export default function Header({ showBackButton = false }: Props) {
+  const navigation = useNavigation()
+
+  function handleGoHome() {
+    navigation.navigate('groups')
+  }
+
   return (
     <Container>
       {showBackButton && (
-        <BackButton>
+        <BackButton onPress={handleGoHome}>
           <BackIcon />
         </BackButton>
       )}
