@@ -17,6 +17,10 @@ export default function Groups() {
     navigation.navigate('newGroup')
   }
 
+  function handleOpenGroup(group: string) {
+    navigation.navigate('players', { group })
+  }
+
   async function fetchGroups() {
     try {
       const data = await groupsGetAll()
@@ -35,23 +39,23 @@ export default function Groups() {
     <Container>
       <Header />
 
-      <Highlight title='Turmas' subtitle='Jogue com a sua turma' />
+      <Highlight title='Grupos' subtitle='Jogue com o seu grupo' />
 
       <FlatList
         data={groups}
         keyExtractor={item => item}
         style={{ width: '100%' }}
         renderItem={({ item }) => (
-          <GroupCard title={item} />
+          <GroupCard title={item} onPress={() => handleOpenGroup(item)} />
         )}
         contentContainerStyle={groups.length === 0 && { flex: 1 }}
         ListEmptyComponent={() => (
-          <ListEmpty message='Que tal cadastrar a primeira turma?' />
+          <ListEmpty message='Que tal cadastrar o primeiro grupo?' />
         )}
       />
 
       <Button
-        title='Criar nova turma'
+        title='Criar novo grupo'
         onPress={handleNewGroup}
       />
     </Container>
